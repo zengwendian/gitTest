@@ -12,6 +12,6 @@ public class IndexController {
 	@ResponseBody
 	public String hello() {
 		System.out.println(11);
-		return "Hello Spring Cloud";
+		return "Hello Spring Cloud111";
 	}
 }
