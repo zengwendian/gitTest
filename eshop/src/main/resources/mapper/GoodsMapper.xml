@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.qingshixun.project.eshop.sckill.mapper.GoodsMapper">
+	<select id="listGoodsVo" resultType="com.qingshixun.project.eshop.sckill.pojo.Goods">
+	    SELECT
+	    	 g.goods_name,g.*,mg.stock_count, mg.start_date, mg.end_date,mg.seckill_price
+    	FROM
+    	     seckill_goods mg left join goods g on mg.goods_id = g.id
+ 	</select>
+</mapper>
