@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.zwd.project.mapper.WarinfoMapper">
+	<select id="getListTeam" resultType="Team">
+	    select * from team 
+ 	</select>
+ 	<select id="getTeamById" resultType="Score">
+	    select * from score where team_id = #{teamId} 
+ 	</select>
+</mapper>

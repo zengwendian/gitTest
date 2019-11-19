@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8" />
+<title>LOL英雄联盟2019世界联赛</title>
+<style type="text/css">
+.main-menu .menu-title {
+	display: block;
+	padding: 8px 12px;
+	text-decoration: none;
+	font-weight: 700;
+	border-bottom: 1px solid #2f3444;
+	width: 40px;
+}
+</style>
+<script type="text/javascript" th:src="@{/js/jquery.js}"></script>
+</head>
+<body>
+	<h2>四分之一决赛详情</h2>
+	<div class="main-menu" th:each="team:${teams}">
+		<a class="menu-title" href="#"> <input class="teamId"
+			type="hidden" th:value="${team.id}" /> <span class="lable"
+			th:text="${team.team_name}"></span>
+		</a> 
+		<span class="content"></span>
+	</div>
+	<script type="text/javascript">
+		$(".lable").click(
+				function(event) {
+					event.preventDefault();
+					var sp = $(this);
+					$(this).parent().siblings().find('.content').slideToggle("fast");
+					var teamId = $(this).parent().find('.teamId').val();
+					$.get("dropDown", {
+						teamId : teamId
+					}, function(data) {
+						$.each(data, function(n, value) {
+							//alert("<span>"+data[n].record+"</span>");
+							//var obj = "";
+							//obj += "<span>"+data[n].record+"</span>";
+							//$('#content').html(obj);
+							sp.parent().next().html(
+									"<span>" + data[n].record + "</span>"
+											+ "</br>");
+						});
+					});
+				});
+	</script>
+</body>
+</html>
